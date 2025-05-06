@@ -20,6 +20,9 @@ internal sealed class GodotClipboard : IClipboard {
 	public Task ClearAsync()
 		=> SetTextAsync(String.Empty);
 
+	public Task FlushAsync()
+		=> Task.CompletedTask;
+
 	public Task SetDataObjectAsync(IDataObject data)
 		=> Task.CompletedTask;
 
@@ -28,5 +31,8 @@ internal sealed class GodotClipboard : IClipboard {
 
 	public Task<object?> GetDataAsync(string format)
 		=> Task.FromResult<object?>(null);
+
+	public Task<IDataObject?> TryGetInProcessDataObjectAsync()
+		=> Task.FromResult<IDataObject?>(null);
 
 }
